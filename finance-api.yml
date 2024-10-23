@@ -1,0 +1,536 @@
+openapi: 3.0.0
+info:
+  title: Finance API
+  description: A Finance API to manage transactions, accounts, and budgets.
+  version: 1.0.0
+servers:
+  - url: https://api.finance.com/v1
+    description: Production server
+  - url: https://staging.api.finance.com/v1
+    description: Staging server
+
+paths:
+  /transactions:
+    get:
+      summary: List all transactions
+      description: Retrieve a list of all transactions.
+      responses:
+        '200':
+          description: A list of transactions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+              examples:
+                success:
+                  value: [
+                    {
+                          "id": "txn_12345",
+                          "amount": 500,
+                          "currency": "USD",
+                          "description": "Salary",
+                          "date": "2023-09-12"
+                      },
+                      {
+                          "id": "txn_54321",
+                          "amount": -50,
+                          "currency": "USD",
+                          "description": "Grocery Shopping",
+                          "date": "2023-09-11"
+                      },
+                      {
+                          "id": "txn_67890",
+                          "amount": -20,
+                          "currency": "USD",
+                          "description": "Coffee Shop",
+                          "date": "2023-09-10"
+                      },
+                      {
+                          "id": "txn_98765",
+                          "amount": 2000,
+                          "currency": "USD",
+                          "description": "Freelance Payment",
+                          "date": "2023-09-09"
+                      },
+                      {
+                          "id": "txn_11223",
+                          "amount": -100,
+                          "currency": "USD",
+                          "description": "Electricity Bill",
+                          "date": "2023-09-08"
+                      },
+                      {
+                          "id": "txn_44556",
+                          "amount": -150,
+                          "currency": "USD",
+                          "description": "Online Shopping",
+                          "date": "2023-09-07"
+                      },
+                      {
+                          "id": "txn_33445",
+                          "amount": 300,
+                          "currency": "USD",
+                          "description": "Sold Old Laptop",
+                          "date": "2023-09-06"
+                      },
+                      {
+                          "id": "txn_66778",
+                          "amount": -70,
+                          "currency": "USD",
+                          "description": "Dinner with Friends",
+                          "date": "2023-09-05"
+                      },
+                      {
+                          "id": "txn_55667",
+                          "amount": 1200,
+                          "currency": "USD",
+                          "description": "Consulting Fee",
+                          "date": "2023-09-04"
+                      },
+                      {
+                          "id": "txn_88990",
+                          "amount": -40,
+                          "currency": "USD",
+                          "description": "Fuel",
+                          "date": "2023-09-03"
+                      },
+                      {
+                          "id": "txn_99911",
+                          "amount": 750,
+                          "currency": "USD",
+                          "description": "Bonus",
+                          "date": "2023-09-02"
+                      },
+                      {
+                          "id": "txn_11334",
+                          "amount": -30,
+                          "currency": "USD",
+                          "description": "Gym Membership",
+                          "date": "2023-09-01"
+                      },
+                      {
+                          "id": "txn_22445",
+                          "amount": -200,
+                          "currency": "USD",
+                          "description": "Car Maintenance",
+                          "date": "2023-08-31"
+                      },
+                      {
+                          "id": "txn_55668",
+                          "amount": 500,
+                          "currency": "USD",
+                          "description": "Stock Dividends",
+                          "date": "2023-08-30"
+                      },
+                      {
+                          "id": "txn_44557",
+                          "amount": -60,
+                          "currency": "USD",
+                          "description": "Movie Tickets",
+                          "date": "2023-08-29"
+                      },
+                      {
+                          "id": "txn_66779",
+                          "amount": -10,
+                          "currency": "USD",
+                          "description": "Bus Fare",
+                          "date": "2023-08-28"
+                      },
+                      {
+                          "id": "txn_77880",
+                          "amount": 600,
+                          "currency": "USD",
+                          "description": "Refund from Store",
+                          "date": "2023-08-27"
+                      },
+                      {
+                          "id": "txn_88991",
+                          "amount": -45,
+                          "currency": "USD",
+                          "description": "Lunch",
+                          "date": "2023-08-26"
+                      },
+                      {
+                          "id": "txn_99882",
+                          "amount": 1000,
+                          "currency": "USD",
+                          "description": "Project Payment",
+                          "date": "2023-08-25"
+                      },
+                      {
+                          "id": "txn_33446",
+                          "amount": -85,
+                          "currency": "USD",
+                          "description": "Pet Supplies",
+                          "date": "2023-08-24"
+                      },
+                      {
+                          "id": "txn_11335",
+                          "amount": -90,
+                          "currency": "USD",
+                          "description": "Haircut",
+                          "date": "2023-08-23"
+                      },
+                      {
+                          "id": "txn_22446",
+                          "amount": 1500,
+                          "currency": "USD",
+                          "description": "Freelance Project",
+                          "date": "2023-08-22"
+                      },
+                      {
+                          "id": "txn_55669",
+                          "amount": -35,
+                          "currency": "USD",
+                          "description": "Books",
+                          "date": "2023-08-21"
+                      },
+                      {
+                          "id": "txn_44558",
+                          "amount": -100,
+                          "currency": "USD",
+                          "description": "Doctor Visit",
+                          "date": "2023-08-20"
+                      },
+                      {
+                          "id": "txn_66780",
+                          "amount": -25,
+                          "currency": "USD",
+                          "description": "Taxi Fare",
+                          "date": "2023-08-19"
+                      },
+                      {
+                          "id": "txn_77881",
+                          "amount": 400,
+                          "currency": "USD",
+                          "description": "Sold Old Bike",
+                          "date": "2023-08-18"
+                      },
+                      {
+                          "id": "txn_88992",
+                          "amount": -150,
+                          "currency": "USD",
+                          "description": "New Shoes",
+                          "date": "2023-08-17"
+                      },
+                      {
+                          "id": "txn_99883",
+                          "amount": 700,
+                          "currency": "USD",
+                          "description": "Gift from Family",
+                          "date": "2023-08-16"
+                      },
+                      {
+                          "id": "txn_33447",
+                          "amount": -200,
+                          "currency": "USD",
+                          "description": "Weekend Getaway",
+                          "date": "2023-08-15"
+                      },
+                      {
+                          "id": "txn_11336",
+                          "amount": -75,
+                          "currency": "USD",
+                          "description": "Phone Accessories",
+                          "date": "2023-08-14"
+                      },
+                      {
+                          "id": "txn_22447",
+                          "amount": -95,
+                          "currency": "USD",
+                          "description": "Groceries",
+                          "date": "2023-08-13"
+                      },
+                      {
+                          "id": "txn_55670",
+                          "amount": -120,
+                          "currency": "USD",
+                          "description": "Gas Bill",
+                          "date": "2023-08-12"
+                      },
+                      {
+                          "id": "txn_44559",
+                          "amount": 100,
+                          "currency": "USD",
+                          "description": "Refund",
+                          "date": "2023-08-11"
+                      },
+                      {
+                          "id": "txn_66781",
+                          "amount": 2500,
+                          "currency": "USD",
+                          "description": "Contract Payment",
+                          "date": "2023-08-10"
+                      },
+                      {
+                          "id": "txn_77882",
+                          "amount": -45,
+                          "currency": "USD",
+                          "description": "Gasoline",
+                          "date": "2023-08-09"
+                      },
+                      {
+                          "id": "txn_88993",
+                          "amount": 600,
+                          "currency": "USD",
+                          "description": "Tax Refund",
+                          "date": "2023-08-08"
+                      },
+                      {
+                          "id": "txn_99884",
+                          "amount": -60,
+                          "currency": "USD",
+                          "description": "Streaming Subscription",
+                          "date": "2023-08-07"
+                      },
+                      {
+                          "id": "txn_33448",
+                          "amount": -30,
+                          "currency": "USD",
+                          "description": "Coffee and Snacks",
+                          "date": "2023-08-06"
+                      },
+                      {
+                          "id": "txn_11337",
+                          "amount": 900,
+                          "currency": "USD",
+                          "description": "Consulting Fee",
+                          "date": "2023-08-05"
+                      },
+                      {
+                          "id": "txn_22448",
+                          "amount": -80,
+                          "currency": "USD",
+                          "description": "Online Course",
+                          "date": "2023-08-04"
+                      },
+                      {
+                          "id": "txn_55671",
+                          "amount": -65,
+                          "currency": "USD",
+                          "description": "Clothing",
+                          "date": "2023-08-03"
+                      }
+                  ]
+        '400':
+          description: Invalid request due to missing parameters.
+          content:
+            application/json:
+              examples:
+                invalidRequest:
+                  value:
+                    message: "Invalid date range provided."
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              examples:
+                serverError:
+                  value:
+                    message: "Unable to fetch transactions due to a server error."
+
+    post:
+      summary: Create a new transaction
+      description: Add a new transaction to the finance system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionInput'
+      responses:
+        '200':
+          description: Transaction successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+              examples:
+                success:
+                  value:
+                    id: "txn_67890"
+                    amount: 150.00
+                    currency: "USD"
+                    description: "Freelance Payment"
+                    date: "2023-09-12"
+        '400':
+          description: Bad request due to invalid data.
+          content:
+            application/json:
+              examples:
+                invalidInput:
+                  value:
+                    message: "Amount cannot be negative."
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              examples:
+                serverError:
+                  value:
+                    message: "Failed to create transaction."
+
+  /transactions/{transactionId}:
+    get:
+      summary: Get a transaction by ID
+      description: Retrieve details of a specific transaction by ID.
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Transaction details successfully retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+              examples:
+                success:
+                  value:
+                    id: "txn_12345"
+                    amount: 500.00
+                    currency: "USD"
+                    description: "Salary"
+                    date: "2023-09-12"
+        '400':
+          description: Invalid transaction ID provided.
+          content:
+            application/json:
+              examples:
+                invalidRequest:
+                  value:
+                    message: "Transaction ID is invalid."
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              examples:
+                serverError:
+                  value:
+                    message: "Failed to retrieve transaction details."
+
+    put:
+      summary: Update a transaction
+      description: Update details of a transaction.
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionInput'
+      responses:
+        '200':
+          description: Transaction successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+              examples:
+                success:
+                  value:
+                    id: "txn_12345"
+                    amount: 550.00
+                    currency: "USD"
+                    description: "Updated Salary"
+                    date: "2023-09-12"
+        '400':
+          description: Invalid data provided for update.
+          content:
+            application/json:
+              examples:
+                invalidInput:
+                  value:
+                    message: "Amount cannot be negative."
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              examples:
+                serverError:
+                  value:
+                    message: "Failed to update transaction."
+
+    delete:
+      summary: Delete a transaction
+      description: Delete a transaction by ID.
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Transaction successfully deleted.
+          content:
+            application/json:
+              examples:
+                success:
+                  value:
+                    message: "Transaction deleted successfully."
+        '400':
+          description: Invalid transaction ID provided.
+          content:
+            application/json:
+              examples:
+                invalidRequest:
+                  value:
+                    message: "Transaction ID is invalid."
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              examples:
+                serverError:
+                  value:
+                    message: "Failed to delete transaction."
+
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "txn_12345"
+        amount:
+          type: number
+          example: 500.00
+        currency:
+          type: string
+          example: "USD"
+        description:
+          type: string
+          example: "Salary"
+        date:
+          type: string
+          format: date
+          example: "2023-09-12"
+
+    TransactionInput:
+      type: object
+      properties:
+        amount:
+          type: number
+          example: 500.00
+        currency:
+          type: string
+          example: "USD"
+        description:
+          type: string
+          example: "Salary"
+        date:
+          type: string
+          format: date
+          example: "2023-09-12"
