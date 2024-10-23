@@ -13,7 +13,7 @@ paths:
   /transactions:
     get:
       summary: List all transactions
-      description: Retrieve a list of all transactions.
+      description: 
       responses:
         '200':
           description: A list of transactions.
